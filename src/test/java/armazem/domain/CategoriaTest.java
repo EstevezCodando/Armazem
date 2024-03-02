@@ -1,14 +1,13 @@
-package controle.armazem.armazem;
+package armazem.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import model.domain.Categoria;
 
-@SpringBootTest
+
 class CategoriaTest {
 	
 	private Categoria bebidas; 
@@ -50,5 +49,24 @@ class CategoriaTest {
 		assertEquals(DESCRICAO,bebidas.getDescricao());
 		
 	}
+	
+	@Test
+	void alterarAtributosCategoria() {
+	
+	    Categoria refrigerantes = new Categoria("0003", "Refrigerantes", "Bebidas gaseificadas", bebidas);
+	    
+	
+	    refrigerantes.setNome("Soft Drinks");
+	    refrigerantes.setDescricao("Bebidas gaseificadas sem álcool");
+	    Categoria sucos = new Categoria("0004", "Sucos", "Bebidas naturais de frutas", null);
+	    refrigerantes.setCategoriaPai(sucos);
+	    
+	
+	    assertEquals("Soft Drinks", refrigerantes.getNome());
+	    assertEquals("Bebidas gaseificadas sem álcool", refrigerantes.getDescricao());
+	    assertEquals(sucos, refrigerantes.getCategoriaPai());
+	    assertEquals("Sucos", refrigerantes.getCategoriaPai().getNome());
+	}
+
 
 }
