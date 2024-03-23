@@ -29,6 +29,10 @@ public class ProdutoService {
         historicoPrecoService.incluir(historicoPreco);
     }
 	
+	  public Produto obter(String idProduto) {
+	        return produtos.get(idProduto);
+	    }
+	
 	  public void alterarPrecoAquisicao(String idProduto, Double novoPrecoAquisicao) {
 	        Produto produto = produtos.get(idProduto);
 	        if (produto != null) {
