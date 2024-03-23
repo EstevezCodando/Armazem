@@ -16,5 +16,5 @@ public interface IEnderecoClient {
 	// /01001000/json/
 	
 	Endereco obterPorCep(@PathVariable String cep);
-
+ 
 }
