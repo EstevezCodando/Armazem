@@ -5,9 +5,11 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
 import armazem.JeanAlvarez.model.domain.HistoricoPreco;
 import armazem.JeanAlvarez.model.domain.Produto;
-
+@Service
 public class HistoricoPrecoService {
 	private Map<Integer, HistoricoPreco> historicopreco = new HashMap<>();
 

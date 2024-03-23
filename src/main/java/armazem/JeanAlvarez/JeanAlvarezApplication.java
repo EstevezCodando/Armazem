@@ -6,14 +6,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.cloud.openfeign.FeignAutoConfiguration;
+
 @SpringBootApplication
 @EnableFeignClients(basePackages = "armazem.JeanAlvarez.model.clients")
-@ImportAutoConfiguration({FeignAutoConfiguration.class})
+@ImportAutoConfiguration({ FeignAutoConfiguration.class })
 public class JeanAlvarezApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(JeanAlvarezApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(JeanAlvarezApplication.class, args);
+	}
 
 }
-

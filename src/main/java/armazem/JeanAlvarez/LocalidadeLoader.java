@@ -15,7 +15,6 @@ import armazem.JeanAlvarez.model.domain.Municipio;
 public class LocalidadeLoader implements ApplicationRunner {
 
 	@Autowired
-
 	private ILocalidadeClient LocalidadeClient;
 
 	@Override
@@ -23,13 +22,12 @@ public class LocalidadeLoader implements ApplicationRunner {
 		Collection<Estado> estados =  LocalidadeClient.obterEstados();
 		System.out.println("------------ AQUI ---------- " );
 		for (Estado estado: estados) {
-			System.out.println("- ESTADO: " + estado.getNome());
-			Collection<Municipio> municipios = LocalidadeClient.obterMunicipioPorUF(estado.getId());
+			System.out.println("----- ESTADO: " + estado.getNome());
+			Collection<Municipio> municipios = LocalidadeClient.obterMunicipioPorUF(33);
 			for (Municipio municipio : municipios) {
 				System.out.println("---Municipio: " + municipio.getNome());
 			}
 			
-	
 		}
 		System.out.println("---- ---------------");
 	}

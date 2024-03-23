@@ -5,8 +5,11 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
 import armazem.JeanAlvarez.model.domain.Categoria;
 
+@Service
 public class CategoriaService {
     private Map<String, Categoria> categorias = new HashMap<>();
 

@@ -1,6 +1,7 @@
 package armazem.JeanAlvarez.serviceTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -49,18 +50,17 @@ public class FornecedorServiceTest {
     @Test
     void testAtualizarFornecedor() {
         Fornecedor novoFornecedor = new Fornecedor(fornecedor.getId(), "Distribuidora de Bebidas Novo S.A.", "98.765.432/0001-01", "Distribuidora Y", "Distri Y", "4321-8765", endereco);
-        fornecedorService.atualizar(fornecedor.getId(), novoFornecedor);
+        assertTrue(fornecedorService.atualizar(fornecedor.getId(), novoFornecedor));
 
         Fornecedor atualizado = fornecedorService.obter(fornecedor.getId());
         assertNotNull(atualizado);
         assertEquals(novoFornecedor.getNome(), atualizado.getNome());
         assertEquals(novoFornecedor.getRazaoSocial(), atualizado.getRazaoSocial());
     }
+
     @Test
     void testExcluirFornecedor_QueNaoExiste() {
-        fornecedorService.excluir("F002"); 
-        Fornecedor excluido = fornecedorService.obter("F002");
-        assertNull(excluido);
+        assertFalse(fornecedorService.excluir("F002")); // Espera-se que retorne falso porque o fornecedor não existe
     }
 
     @Test
@@ -68,15 +68,14 @@ public class FornecedorServiceTest {
         Endereco novoEndereco = new Endereco("20000-000", "Rua dos Atualizados", "101", "Centro", "Cidade Y", "Estado Z");
         Fornecedor novoFornecedor = new Fornecedor("F002", "Distribuidora Atualizada S.A.", "98.765.432/0001-01", "Distribuidora Y", "Distri Y", "8765-4321", novoEndereco);
 
-        fornecedorService.atualizar("F002", novoFornecedor);
-        Fornecedor atualizado = fornecedorService.obter("F002");
-
-        assertNull(atualizado);
+        assertFalse(fornecedorService.atualizar("F002", novoFornecedor)); // Espera-se que retorne falso, pois o fornecedor não existe
     }
 
     @Test
     void testExcluirFornecedor() {
-        fornecedorService.excluir(fornecedor.getId());
+        fornecedorService.incluir(fornecedor); // Garantir que o fornecedor está incluído antes de excluir
+        assertTrue(fornecedorService.excluir(fornecedor.getId())); // Espera-se que retorne verdadeiro, pois o fornecedor existe
+
         Fornecedor excluido = fornecedorService.obter(fornecedor.getId());
         assertNull(excluido);
     }

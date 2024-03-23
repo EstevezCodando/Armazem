@@ -1,12 +1,16 @@
 package armazem.JeanAlvarez.model.service;
 
 import java.time.LocalDateTime;
+
 import java.util.HashMap;
 import java.util.Map;
+
+import org.springframework.stereotype.Service;
 
 import armazem.JeanAlvarez.model.domain.HistoricoPreco;
 import armazem.JeanAlvarez.model.domain.Produto;
 
+@Service
 public class ProdutoService {
 	private Map<String, Produto> produtos = new HashMap<>();
 	private HistoricoPrecoService historicoPrecoService;

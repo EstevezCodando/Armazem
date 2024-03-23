@@ -23,7 +23,7 @@ public interface ILocalidadeClient {
 	@GetMapping(value = "/estados?orderBy=nome")
 	Collection<Estado> obterEstados();
 	
-	@GetMapping(value = "/estados//{ID_SiglaUF}/municipios")
+	@GetMapping(value = "/estados/{ID_SiglaUF}/municipios")
 	Collection<Municipio> obterMunicipioPorUF(@PathVariable Integer ID_SiglaUF);
 	
 	@GetMapping(value = "/municipios/{ID_Municipio}/distritos")

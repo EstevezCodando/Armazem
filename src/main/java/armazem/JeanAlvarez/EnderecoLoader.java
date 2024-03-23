@@ -10,18 +10,17 @@ import armazem.JeanAlvarez.model.domain.Endereco;
 
 @Component
 public class EnderecoLoader implements ApplicationRunner {
-	
+
 	@Autowired
-	
+
 	private IEnderecoClient enderecoClient;
+
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		Endereco EnderecoViaCep = enderecoClient.obterPorCep("20010020");
-		System.out.println("------------ AQUI ---------- " );
+		System.out.println("------------ AQUI ---------- ");
 		System.out.println("---- " + EnderecoViaCep);
-		
+
 	}
-
-
 
 }

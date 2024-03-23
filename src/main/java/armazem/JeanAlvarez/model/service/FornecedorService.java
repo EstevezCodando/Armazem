@@ -1,12 +1,14 @@
 package armazem.JeanAlvarez.model.service;
 
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
 import armazem.JeanAlvarez.model.domain.Fornecedor;
 
+@Service
 public class FornecedorService {
 	private Map<String, Fornecedor> fornecedores = new HashMap<>();
 
@@ -22,21 +24,16 @@ public class FornecedorService {
         return fornecedores.values();
     }
 
-    public void atualizar(String idFornecedor, Fornecedor dadosFornecedor) {
+    public boolean atualizar(String idFornecedor, Fornecedor dadosFornecedor) {
         if (fornecedores.containsKey(idFornecedor)) {
             fornecedores.put(idFornecedor, dadosFornecedor);
-            System.out.println("Fornecedor " + dadosFornecedor.getNome() + " atualizado com sucesso.");
-        } else {
-            System.out.println("Fornecedor com ID " + idFornecedor + " não encontrado.");
+            return true;
         }
+        return false;
     }
 
-    public void excluir(String idFornecedor) {
-        if (fornecedores.remove(idFornecedor) != null) {
-            System.out.println("Fornecedor com ID " + idFornecedor + " excluído com sucesso.");
-        } else {
-            System.out.println("Fornecedor com ID " + idFornecedor + " não encontrado.");
-        }
+    public boolean excluir(String idFornecedor) {
+        return fornecedores.remove(idFornecedor) != null;
     }
 
 }
