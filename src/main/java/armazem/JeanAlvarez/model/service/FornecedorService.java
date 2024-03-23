@@ -12,7 +12,6 @@ public class FornecedorService {
 
     public void incluir(Fornecedor fornecedor) {
         fornecedores.put(fornecedor.getId(), fornecedor);
-        System.out.println("Fornecedor " + fornecedor.getNome() + " incluído com sucesso.");
     }
 
     public Fornecedor obter(String idFornecedor) {

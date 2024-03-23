@@ -1,53 +1,69 @@
 package armazem.JeanAlvarez.model.service;
 
-import java.util.Collection;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
+import armazem.JeanAlvarez.model.domain.HistoricoPreco;
 import armazem.JeanAlvarez.model.domain.Produto;
 
 public class ProdutoService {
-    
-    private Map<String, Produto> produtos = new HashMap<>();
-    private HistoricoPrecoService historicoPrecoService = new HistoricoPrecoService();
-
-    // Incluir produto
-    public void incluir(Produto produto) {
+	private Map<String, Produto> produtos = new HashMap<>();
+	private HistoricoPrecoService historicoPrecoService;
+	
+	public ProdutoService(HistoricoPrecoService historicoPrecoService) {
+		this.historicoPrecoService = historicoPrecoService;
+	}
+	public void incluir(Produto produto) {
         produtos.put(produto.getIdProduto(), produto);
-        System.out.println("A inclusão do produto " + produto.getNome() + " foi realizada com sucesso.");
+        
+        // Criação do histórico inicial para o produto
+        HistoricoPreco historicoPreco = new HistoricoPreco(
+            produto.getIdProduto(),
+            LocalDateTime.now(),
+            0.0, // Preço aquisição antigo
+            0.0, // Preço venda antigo
+            produto.getPrecoAquisicao(),
+            produto.getPrecoVenda()
+        );
+        historicoPrecoService.incluir(historicoPreco);
     }
+	
+	  public void alterarPrecoAquisicao(String idProduto, Double novoPrecoAquisicao) {
+	        Produto produto = produtos.get(idProduto);
+	        if (produto != null) {
+	            Double precoAntigo = produto.getPrecoAquisicao();
+	            produto.setPrecoAquisicao(novoPrecoAquisicao);
 
-    // Excluir produto
-    public void excluir(String idProduto) {
-        Produto produto = produtos.remove(idProduto);
-        if (produto != null) {
-            System.out.println("A exclusão do produto " + produto.getNome() + " foi realizada com sucesso.");
-        } else {
-            System.out.println("Produto com ID " + idProduto + " não encontrado.");
-        }
-    }
+	            // Adicionar ao histórico de preços
+	            historicoPrecoService.incluir(new HistoricoPreco(
+	                idProduto,
+	                LocalDateTime.now(),
+	                precoAntigo,
+	                produto.getPrecoVenda(), // Preço venda antigo
+	                novoPrecoAquisicao,
+	                produto.getPrecoVenda() // Preço venda atual
+	            ));
+	        }
+	    }
 
-    // Obter lista de produtos
-    public Collection<Produto> obterLista() {
-        return produtos.values();
-    }
+	    public void alterarPrecoVenda(String idProduto, Double novoPrecoVenda) {
+	        Produto produto = produtos.get(idProduto);
+	        if (produto != null) {
+	            Double precoAntigo = produto.getPrecoVenda();
+	            produto.setPrecoVenda(novoPrecoVenda);
 
-    // Obter um produto específico
-    public Produto obter(String idProduto) {
-        return produtos.get(idProduto);
-    }
+	            // Adicionar ao histórico de preços
+	            historicoPrecoService.incluir(new HistoricoPreco(
+	                idProduto,
+	                LocalDateTime.now(),
+	                produto.getPrecoAquisicao(), // Preço aquisição atual
+	                precoAntigo,
+	                produto.getPrecoAquisicao(),
+	                novoPrecoVenda
+	            ));
+	        }
+	    }
+	
 
-    // Alterar produto
-    public void alterar(String idProduto, Double novoPrecoAquisicao, Double novoPrecoVenda, int novaQuantidadeEstoque) {
-        Produto produto = produtos.get(idProduto);
-        if (produto != null) {
-            produto.setPrecoAquisicao(novoPrecoAquisicao);
-            produto.setPrecoVenda(novoPrecoVenda);
-            produto.setQuantidadeEstoque(novaQuantidadeEstoque);
-            historicoPrecoService.adicionarEntradaHistorico(produto, novoPrecoAquisicao, novoPrecoVenda);
-            System.out.println("Produto " + produto.getNome() + " atualizado com sucesso.");
-        } else {
-            System.out.println("Produto com ID " + idProduto + " não encontrado para atualização.");
-        }
-    }
 }

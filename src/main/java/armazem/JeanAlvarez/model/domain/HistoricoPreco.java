@@ -1,8 +1,12 @@
 package armazem.JeanAlvarez.model.domain;
 
 import java.time.LocalDateTime;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class HistoricoPreco {
+	 private static final AtomicInteger ID_GENERATOR = new AtomicInteger(0);
+	 
+	private int id;
 	private String idProduto;
 	private LocalDateTime dataAlteracao;
 	private Double precoAquisicaoAntigo;
@@ -12,13 +16,17 @@ public class HistoricoPreco {
 	
 	public HistoricoPreco(String idProduto, LocalDateTime dataAlteracao, Double precoAquisicaoAntigo,
 			Double precoVendaAntigo, Double precoAquisicaoAtual, Double precoVendaAtual) {
-		super();
+		this.id = ID_GENERATOR.incrementAndGet();
 		this.idProduto = idProduto;
 		this.dataAlteracao = dataAlteracao;
 		this.precoAquisicaoAntigo = precoAquisicaoAntigo;
 		this.precoVendaAntigo = precoVendaAntigo;
 		this.precoAquisicaoAtual = precoAquisicaoAtual;
 		this.precoVendaAtual = precoVendaAtual;
+	}
+	
+	public int getId() {
+		return id;
 	}
 	public String getIdProduto() {
 		return idProduto;
@@ -59,7 +67,7 @@ public class HistoricoPreco {
 	
 	@Override
 	public String toString() {
-		return "HistoricoPreco [idProduto=" + idProduto + ", dataAlteracao=" + dataAlteracao + ", precoAquisicaoAntigo="
+		return "HistoricoPreco [id =" + id + ", idProduto=" + idProduto + ", dataAlteracao=" + dataAlteracao + ", precoAquisicaoAntigo="
 				+ precoAquisicaoAntigo + ", precoVendaAntigo=" + precoVendaAntigo + ", precoAquisicaoAtual="
 				+ precoAquisicaoAtual + ", precoVendaAtual=" + precoVendaAtual + "]";
 	}

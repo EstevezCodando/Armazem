@@ -13,7 +13,6 @@ public class CategoriaService {
     // Incluir categoria
     public void incluir(Categoria categoria) {
         categorias.put(categoria.getId(), categoria);
-        System.out.println("Categoria " + categoria.getNome() + " incluída com sucesso.");
     }
 
     // Obter uma categoria pelo ID

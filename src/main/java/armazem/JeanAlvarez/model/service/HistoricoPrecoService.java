@@ -1,34 +1,36 @@
 package armazem.JeanAlvarez.model.service;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 
 import armazem.JeanAlvarez.model.domain.HistoricoPreco;
 import armazem.JeanAlvarez.model.domain.Produto;
 
 public class HistoricoPrecoService {
-    public void adicionarEntradaHistorico(Produto produto, Double novoPrecoAquisicao, Double novoPrecoVenda) {
-        HistoricoPreco novaEntrada = new HistoricoPreco(
-            produto.getIdProduto(),
-            LocalDateTime.now(),
-            produto.getPrecoAquisicao(),
-            produto.getPrecoVenda(),
-            novoPrecoAquisicao,
-            novoPrecoVenda
-        );
-        produto.getHistoricoPreco().add(novaEntrada);
-    }
+	private Map<Integer, HistoricoPreco> historicopreco = new HashMap<>();
 
-    public List<HistoricoPreco> obterHistoricoPreco(Produto produto) {
-        return produto.getHistoricoPreco();
-    }
+	public void incluir(HistoricoPreco historicoPreco) {
+		historicopreco.put(historicoPreco.getId(), historicoPreco);
+	}
 
+	public HistoricoPreco obterUltimoHistorico() {
+		return historicopreco.values().stream().max(Comparator.comparingInt(HistoricoPreco::getId)).orElse(null);
+	}
 
-	    public void imprimirDetalhesEHistorico(Produto produto) {
-	        System.out.println(produto);
-	        System.out.println("Histórico de Preço:");
-	        obterHistoricoPreco(produto).forEach(System.out::println);
-	        System.out.println("---------------------------------------------------");
+	public Collection<HistoricoPreco> obterLista() {
+		return historicopreco.values();
+	}
+	
+	public void imprimirDetalhesEHistorico(Produto produto) {
+	    System.out.println(produto);
+	    System.out.println("Histórico de Preço:");
+	    for (HistoricoPreco hp : historicopreco.values()) {
+	        if (hp.getIdProduto().equals(produto.getIdProduto())) {
+	            System.out.println(hp);
+	        }
 	    }
-
+	    System.out.println("---------------------------------------------------");
+	}
 }
