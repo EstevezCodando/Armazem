@@ -11,6 +11,7 @@ import armazem.JeanAlvarez.model.domain.Fornecedor;
 @Service
 public class FornecedorService {
 	private Map<String, Fornecedor> fornecedores = new HashMap<>();
+	
 
     public void incluir(Fornecedor fornecedor) {
         fornecedores.put(fornecedor.getId(), fornecedor);
