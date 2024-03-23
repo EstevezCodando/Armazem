@@ -1,5 +1,7 @@
 package armazem.JeanAlvarez;
 
+import java.util.List;
+
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Component;
 import armazem.JeanAlvarez.model.domain.Categoria;
 import armazem.JeanAlvarez.model.domain.Endereco;
 import armazem.JeanAlvarez.model.domain.Fornecedor;
+import armazem.JeanAlvarez.model.domain.Produto;
 import armazem.JeanAlvarez.model.service.CategoriaService;
 import armazem.JeanAlvarez.model.service.FornecedorService;
 import armazem.JeanAlvarez.model.service.HistoricoPrecoService;
@@ -35,21 +38,21 @@ public class ProdutoLoader implements ApplicationRunner {
         // Testar FornecedorService
         fornecedorService.incluir(fornecedor);
 
-       // Produto produto1 = new Produto("P001", "Cachaça 51", "Müller", "985 ml", "Cachaça brasileira popular", alcoolicas, "7896541239876", 12.00, 20.00, 100, List.of(fornecedor));
-       // Produto produto2 = new Produto("P002", "Vodka Absolut", "Absolut", "750 ml", "Vodka sueca", alcoolicas, "7896541239999", 30.00, 45.00, 50, List.of(fornecedor));
+        Produto produto1 = new Produto("P001", "Cachaça 51", "Müller", "985 ml", "Cachaça brasileira popular", alcoolicas, "7896541239876", 12.00, 20.00, 100, List.of(fornecedor));
+        Produto produto2 = new Produto("P002", "Vodka Absolut", "Absolut", "750 ml", "Vodka sueca", alcoolicas, "7896541239999", 30.00, 45.00, 50, List.of(fornecedor));
 
         // Testar ProdutoService
-        //produtoService.incluir(produto1);
-        //produtoService.incluir(produto2);
+        produtoService.incluir(produto1);
+        produtoService.incluir(produto2);
 
         // Testar alteração de preço e histórico de preços
-        //produtoService.alterar("P001", 12.00, 22.00, 100);
+        produtoService.alterar("P001", 12.00, 22.00, 100);
 
         // Imprimir detalhes e histórico dos produtos
-       // System.out.println("Detalhes e Histórico de Preços do Produto 1:");
-       // historicoPrecoService.imprimirDetalhesEHistorico(produto1);
+       System.out.println("Detalhes e Histórico de Preços do Produto 1:");
+        historicoPrecoService.imprimirDetalhesEHistorico(produto1);
 
         //System.out.println("Detalhes e Histórico de Preços do Produto 2:");
-       // historicoPrecoService.imprimirDetalhesEHistorico(produto2);
+        historicoPrecoService.imprimirDetalhesEHistorico(produto2);
     }
 }
