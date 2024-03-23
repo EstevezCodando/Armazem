@@ -56,6 +56,23 @@ public class FornecedorServiceTest {
         assertEquals(novoFornecedor.getNome(), atualizado.getNome());
         assertEquals(novoFornecedor.getRazaoSocial(), atualizado.getRazaoSocial());
     }
+    @Test
+    void testExcluirFornecedor_QueNaoExiste() {
+        fornecedorService.excluir("F002"); 
+        Fornecedor excluido = fornecedorService.obter("F002");
+        assertNull(excluido);
+    }
+
+    @Test
+    void testAtualizarFornecedor_QueNaoExiste() {
+        Endereco novoEndereco = new Endereco("20000-000", "Rua dos Atualizados", "101", "Centro", "Cidade Y", "Estado Z");
+        Fornecedor novoFornecedor = new Fornecedor("F002", "Distribuidora Atualizada S.A.", "98.765.432/0001-01", "Distribuidora Y", "Distri Y", "8765-4321", novoEndereco);
+
+        fornecedorService.atualizar("F002", novoFornecedor);
+        Fornecedor atualizado = fornecedorService.obter("F002");
+
+        assertNull(atualizado);
+    }
 
     @Test
     void testExcluirFornecedor() {

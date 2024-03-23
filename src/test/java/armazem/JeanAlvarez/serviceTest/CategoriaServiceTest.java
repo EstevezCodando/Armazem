@@ -58,4 +58,20 @@ public class CategoriaServiceTest {
         Categoria excluida = categoriaService.obter(categoria.getId());
         assertNull(excluida);
     }
+    
+    @Test
+    void testAtualizarCategoriaNaoEncontrada() {
+        Categoria novosDados = new Categoria("9999", "Categoria Não Existente", "Esta categoria não deveria existir no sistema.", null);
+        categoriaService.atualizar("9999", novosDados);
+
+        Categoria categoriaAtualizada = categoriaService.obter("9999");
+        assertNull(categoriaAtualizada, "A categoria não deveria existir após tentativa de atualização de categoria inexistente.");
+    }
+
+    @Test
+    void testExcluirCategoriaNaoExistente() {
+        categoriaService.excluir("9999");
+        Categoria categoriaExcluida = categoriaService.obter("9999");
+        assertNull(categoriaExcluida, "A categoria não deveria existir após tentativa de exclusão de categoria inexistente.");
+    }
 }
