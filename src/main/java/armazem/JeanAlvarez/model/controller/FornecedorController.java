@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +22,7 @@ public class FornecedorController {
     private FornecedorService fornecedorService;
 
     @PostMapping(value="/incluir")
-    public String incluir(Fornecedor fornecedor) {
+    public String incluir(@RequestBody Fornecedor fornecedor) {
         fornecedorService.incluir(fornecedor);
         return "Fornecedor " + fornecedor.getNome() + " incluído com sucesso.";
     }
@@ -36,7 +37,7 @@ public class FornecedorController {
         }
     }
 
-    @GetMapping(value= "/{idFornecedor}/obter")
+    @GetMapping(value= "/obterPorID/{idFornecedor}")
     public Fornecedor obter(@PathVariable String idFornecedor) {
         return fornecedorService.obter(idFornecedor);
     }

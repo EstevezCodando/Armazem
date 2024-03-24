@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "69f72b18-6297-4a87-ba3c-711e6921c82a",
+		"name": "api_Armazem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33822394"
+	},
+	"item": [
+		{
+			"name": "Fornecedor",
+			"item": [
+				{
+					"name": "lista",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/fornecedores/lista",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"fornecedores",
+								"lista"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obterPorID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/fornecedores/obterPorID/F001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"fornecedores",
+								"obterPorID",
+								"F001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "incluirPeloCEP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"id\": \"F020\",\r\n   \"razaoSocial\": \"Piraque LTDA\",\r\n   \"cnpj\": \"33.123.456/0001-99\",\r\n   \"nome\": \"Piraque\",\r\n   \"nomeFantasia\": \"Piraque Biscoito da Vaquinha\",\r\n   \"telefone\": \"2130034004\",\r\n   \"endereco\": {\r\n    \"cep\": \"20930040\"\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/fornecedores/incluir",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"fornecedores",
+								"incluir"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "IncluirCompleto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"id\": \"F999\",\r\n   \"razaoSocial\": \"Camil LTDA\",\r\n   \"cnpj\": \"33.123.456/0001-99\",\r\n   \"nome\": \"Camil\",\r\n   \"nomeFantasia\": \"Camil Arroz\",\r\n   \"telefone\": \"2130034004\",\r\n   \"endereco\": {\r\n    \"cep\": \"20930040\",\r\n    \"logradouro\": \"Rua B\",\r\n    \"complemento\": \"Camil Industrias\",\r\n    \"bairro\": \"Bangu\",\r\n    \"localidade\": \"Rio de Janeiro\",\r\n    \"uf\": \"Rj\"\r\n\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/fornecedores/incluir",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"fornecedores",
+								"incluir"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "excluir",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Localidade",
+			"item": [
+				{
+					"name": "enderecoCep",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/localidade/24900570",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"localidade",
+								"24900570"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Estados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/localidade/estados",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"localidade",
+								"estados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "municipios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/localidade/33/municipios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"localidade",
+								"33",
+								"municipios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Distritos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/localidade/3302106/distritos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"localidade",
+								"3302106",
+								"distritos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produto",
+			"item": []
+		}
+	]
+}

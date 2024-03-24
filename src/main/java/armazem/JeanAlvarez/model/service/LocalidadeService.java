@@ -16,25 +16,25 @@ import armazem.JeanAlvarez.model.domain.Municipio;
 public class LocalidadeService {
 	
 	@Autowired
-	private ILocalidadeClient localidadeClient;
+	private ILocalidadeClient localidadeService;
 	@Autowired
-	private IEnderecoClient enderecoClient;
+	private IEnderecoClient enderecoService;
 
 	public Endereco obterPorCep( String cep) {
-		return enderecoClient.obterPorCep(cep);
+		return enderecoService.obterPorCep(cep);
 	}
 	
 	public Collection<Estado> obterEstados(){
-		return localidadeClient.obterEstados();
+		return localidadeService.obterEstados();
 	}
 
 	public Collection<Municipio> obterMunicipioPorUF( Integer ID_SiglaUF){
-		return localidadeClient.obterMunicipioPorUF(ID_SiglaUF); 
+		return localidadeService.obterMunicipioPorUF(ID_SiglaUF); 
 	}
 	
 
 	public Collection<Distrito> obterDistritoPorMunicipio( Integer ID_Municipio){
-		return localidadeClient.obterDistritoPorMunicipio(ID_Municipio);
+		return localidadeService.obterDistritoPorMunicipio(ID_Municipio);
 	}
 
 }
