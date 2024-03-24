@@ -28,7 +28,7 @@ public class FornecedorController {
     }
     
     @DeleteMapping(value="/excluir/{idFornecedor}")
-    public String excluir(@PathVariable String idFornecedor) {
+    public String excluir(@PathVariable Integer idFornecedor) {
         boolean excluido = fornecedorService.excluir(idFornecedor);
         if (excluido) {
             return "Fornecedor com ID " + idFornecedor + " excluído com sucesso.";
@@ -38,7 +38,7 @@ public class FornecedorController {
     }
 
     @GetMapping(value= "/obterPorID/{idFornecedor}")
-    public Fornecedor obter(@PathVariable String idFornecedor) {
+    public Fornecedor obter(@PathVariable Integer idFornecedor) {
         return fornecedorService.obter(idFornecedor);
     }
 
@@ -48,7 +48,7 @@ public class FornecedorController {
     }
 
     @PostMapping(value="/atualizar/{idFornecedor}")
-    public String atualizar(@PathVariable String idFornecedor, Fornecedor dadosFornecedor) {
+    public String atualizar(@PathVariable Integer idFornecedor, Fornecedor dadosFornecedor) {
         boolean atualizado = fornecedorService.atualizar(idFornecedor, dadosFornecedor);
         if (atualizado) {
             return "Fornecedor " + dadosFornecedor.getNome() + " atualizado com sucesso.";

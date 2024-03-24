@@ -24,11 +24,11 @@ public class HistoricoPrecoServiceTest {
         historicoPrecoService = new HistoricoPrecoService();
 
         LocalDateTime dataAlteracao1 = LocalDateTime.of(2021, 6, 15, 10, 0);
-        historicoPreco1 = new HistoricoPreco("P001", dataAlteracao1, 10.0, 15.0, 12.0, 18.0);
+        historicoPreco1 = new HistoricoPreco(1, dataAlteracao1, 10.0, 15.0, 12.0, 18.0);
         historicoPrecoService.incluir(historicoPreco1);
 
         LocalDateTime dataAlteracao2 = LocalDateTime.of(2021, 7, 20, 11, 0);
-        historicoPreco2 = new HistoricoPreco("P001", dataAlteracao2, 12.0, 18.0, 14.0, 20.0);
+        historicoPreco2 = new HistoricoPreco(1, dataAlteracao2, 12.0, 18.0, 14.0, 20.0);
         historicoPrecoService.incluir(historicoPreco2);
     }
 
@@ -41,9 +41,9 @@ public class HistoricoPrecoServiceTest {
 
     @Test
     void testObterUltimoHistorico() {
-        HistoricoPreco ultimoHistorico = historicoPrecoService.obterUltimoHistorico();
+        HistoricoPreco ultimoHistorico = historicoPrecoService.obterUltimoHistoricoPorProdutoID(1);
         assertNotNull(ultimoHistorico);
-        assertEquals(historicoPreco2.getId(), ultimoHistorico.getId());
+        assertEquals(historicoPreco2.getDataAlteracao(), ultimoHistorico.getDataAlteracao());
     }
 
     @Test

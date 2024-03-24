@@ -1,5 +1,6 @@
 package armazem.JeanAlvarez.model.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Produto extends ProdutoBase {
@@ -10,7 +11,7 @@ public class Produto extends ProdutoBase {
     private List<Fornecedor> fornecedores;
     private List<HistoricoPreco> historicoPreco;
 
-    public Produto(String idProduto, String nome, String marca, String volume, String descricao, Categoria categoria,
+    public Produto(Integer idProduto, String nome, String marca, String volume, String descricao, Categoria categoria,
                    String codigodeBarras, Double precoAquisicao, Double precoVenda, int quantidadeEstoque,
                    List<Fornecedor> fornecedores, List<HistoricoPreco> historicoPreco)
     {
@@ -62,6 +63,13 @@ public class Produto extends ProdutoBase {
 	public void setHistoricoPreco(List<HistoricoPreco> historicoPreco) {
 		this.historicoPreco = historicoPreco;
 	}
+	
+	public void adicionarHistoricoPreco(HistoricoPreco historicoPreco) {
+        if (this.historicoPreco == null) {
+            this.historicoPreco = new ArrayList<>();
+        }
+        this.historicoPreco.add(historicoPreco);
+    }
     
 	 @Override
 	    public String toString() {

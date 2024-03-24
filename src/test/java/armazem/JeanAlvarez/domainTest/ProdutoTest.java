@@ -22,18 +22,18 @@ public class ProdutoTest {
 
     @BeforeEach
     void setUp() {
-        // Criando e configurando a Categoria
-        categoria = new Categoria("0002", "Alcoólicas", "Bebidas com teor alcoólico", null);
+        
+        categoria = new Categoria(2, "Alcoólicas", "Bebidas com teor alcoólico", null);
 
-        // Criando e configurando o Endereço
+        
         endereco = new Endereco("20000-000", "Rua dos Fornecedores", "100", "Centro", "Cidade X", "Estado Y");
 
-        // Criando e configurando o Fornecedor
-        fornecedor = new Fornecedor("F001", "Distribuidora de Bebidas S.A.", "12.345.678/0001-99", "Distribuidora X", "Distri X", "1234-5678", endereco);
+        
+        fornecedor = new Fornecedor(1, "Distribuidora de Bebidas S.A.", "12.345.678/0001-99", "Distribuidora X", "Distri X", "1234-5678", endereco);
 
-        // Criando o Produto
+       
         produto = new Produto(
-            "P001",
+            1,
             "Cachaça 51",
             "Müller",
             "985 ml",
@@ -50,7 +50,7 @@ public class ProdutoTest {
 
     @Test
     void testaConstrutorProduto() {
-        assertEquals("P001", produto.getIdProduto());
+        assertEquals(1, produto.getIdProduto());
         assertEquals("Cachaça 51", produto.getNome());
         assertEquals("Müller", produto.getMarca());
         assertEquals("985 ml", produto.getVolume());

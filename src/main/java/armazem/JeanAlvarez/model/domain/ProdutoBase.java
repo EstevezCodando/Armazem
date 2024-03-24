@@ -1,7 +1,7 @@
 package armazem.JeanAlvarez.model.domain;
 
 public class ProdutoBase {
-	private String idProduto;
+	private Integer idProduto;
 	private String nome;
 	private String marca;
 	private String volume;
@@ -11,7 +11,7 @@ public class ProdutoBase {
 	
 	
 	
-	public ProdutoBase(String idProduto, String nome, String marca, String volume, String descricao,
+	public ProdutoBase(Integer idProduto, String nome, String marca, String volume, String descricao,
 			Categoria categoria, String codigodeBarras) {
 		super();
 		this.idProduto = idProduto;
@@ -23,10 +23,10 @@ public class ProdutoBase {
 		this.codigodeBarras = codigodeBarras;
 	}
 	
-	public String getIdProduto() {
+	public Integer getIdProduto() {
 		return idProduto;
 	}
-	public void setIdProduto(String idProduto) {
+	public void setIdProduto(Integer idProduto) {
 		this.idProduto = idProduto;
 	}
 	public String getNome() {

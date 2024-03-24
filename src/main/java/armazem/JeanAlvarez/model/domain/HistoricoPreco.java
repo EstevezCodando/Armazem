@@ -6,15 +6,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class HistoricoPreco {
 	 private static final AtomicInteger ID_GENERATOR = new AtomicInteger(0);
 	 
-	private int id;
-	private String idProduto;
+	private Integer id;
+	private Integer idProduto;
 	private LocalDateTime dataAlteracao;
 	private Double precoAquisicaoAntigo;
 	private Double precoVendaAntigo;
 	private Double precoAquisicaoAtual;
 	private Double precoVendaAtual;
 	
-	public HistoricoPreco(String idProduto, LocalDateTime dataAlteracao, Double precoAquisicaoAntigo,
+	public HistoricoPreco(Integer idProduto, LocalDateTime dataAlteracao, Double precoAquisicaoAntigo,
 			Double precoVendaAntigo, Double precoAquisicaoAtual, Double precoVendaAtual) {
 		this.id = ID_GENERATOR.incrementAndGet();
 		this.idProduto = idProduto;
@@ -28,10 +28,10 @@ public class HistoricoPreco {
 	public int getId() {
 		return id;
 	}
-	public String getIdProduto() {
+	public Integer getIdProduto() {
 		return idProduto;
 	}
-	public void setIdProduto(String idProduto) {
+	public void setIdProduto(Integer idProduto) {
 		this.idProduto = idProduto;
 	}
 	public LocalDateTime getDataAlteracao() {

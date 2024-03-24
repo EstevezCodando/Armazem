@@ -21,7 +21,7 @@ public class CategoriaServiceTest {
     @BeforeEach
     void setUp() {
         categoriaService = new CategoriaService();
-        categoria = new Categoria("001", "Bebidas", "Bebidas de diversos tipos", null);
+        categoria = new Categoria(1, "Bebidas", "Bebidas de diversos tipos", null);
         categoriaService.incluir(categoria);
     }
 
@@ -61,17 +61,17 @@ public class CategoriaServiceTest {
     
     @Test
     void testAtualizarCategoriaNaoEncontrada() {
-        Categoria novosDados = new Categoria("9999", "Categoria Não Existente", "Esta categoria não deveria existir no sistema.", null);
-        categoriaService.atualizar("9999", novosDados);
+        Categoria novosDados = new Categoria(9999, "Categoria Não Existente", "Esta categoria não deveria existir no sistema.", null);
+        categoriaService.atualizar(9999, novosDados);
 
-        Categoria categoriaAtualizada = categoriaService.obter("9999");
+        Categoria categoriaAtualizada = categoriaService.obter(9999);
         assertNull(categoriaAtualizada, "A categoria não deveria existir após tentativa de atualização de categoria inexistente.");
     }
 
     @Test
     void testExcluirCategoriaNaoExistente() {
-        categoriaService.excluir("9999");
-        Categoria categoriaExcluida = categoriaService.obter("9999");
+        categoriaService.excluir(9999);
+        Categoria categoriaExcluida = categoriaService.obter(9999);
         assertNull(categoriaExcluida, "A categoria não deveria existir após tentativa de exclusão de categoria inexistente.");
     }
 }

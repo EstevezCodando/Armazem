@@ -11,7 +11,7 @@ import armazem.JeanAlvarez.model.domain.Categoria;
 public class CategoriaTest {
 
     private Categoria categoria;
-    private final String ID = "0001";
+    private final Integer ID = 1;
     private final String NOME = "Bebidas";
     private final String DESCRICAO = "Líquido para consumo humano";
 
@@ -30,7 +30,7 @@ public class CategoriaTest {
 
     @Test
     void testaCategoriaPai() {
-        Categoria subcategoria = new Categoria("0002", "Alcoólicas", "Bebidas com teor alcoólico", categoria);
+        Categoria subcategoria = new Categoria(2, "Alcoólicas", "Bebidas com teor alcoólico", categoria);
 
         assertEquals("Alcoólicas", subcategoria.getNome());
         assertEquals(categoria, subcategoria.getCategoriaPai());
@@ -39,11 +39,11 @@ public class CategoriaTest {
 
     @Test
     void testaSettersCategoria() {
-        categoria.setId("0003");
+        categoria.setId(3);
         categoria.setNome("Não Alcoólicas");
         categoria.setDescricao("Bebidas sem teor alcoólico");
 
-        assertEquals("0003", categoria.getId());
+        assertEquals(3, categoria.getId());
         assertEquals("Não Alcoólicas", categoria.getNome());
         assertEquals("Bebidas sem teor alcoólico", categoria.getDescricao());
     }

@@ -1,12 +1,21 @@
 package armazem.JeanAlvarez.model.domain;
+import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
+@Entity
 public class Categoria {
-	private String id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String nome;
 	private String descricao;
+	@Transient
 	private Categoria categoriaPai;
 	
-	public Categoria(String id, String nome, String descricao, Categoria categoriaPai) {
+	public Categoria(Integer id, String nome, String descricao, Categoria categoriaPai) {
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
@@ -14,12 +23,12 @@ public class Categoria {
 	}
 	
 	
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

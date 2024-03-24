@@ -1,15 +1,25 @@
 package armazem.JeanAlvarez.model.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
+
+@Entity
 public class Fornecedor {
-	private String id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
     private String razaoSocial;
     private String cnpj;
     private String nome;
     private String nomeFantasia;
     private String telefone;
+    @Transient
     private Endereco endereco;
     
-    public Fornecedor(String id, String razaoSocial, String cnpj, String nome, String nomeFantasia, String telefone, Endereco endereco) {
+    public Fornecedor(Integer id, String razaoSocial, String cnpj, String nome, String nomeFantasia, String telefone, Endereco endereco) {
         this.id = id;
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
@@ -19,10 +29,10 @@ public class Fornecedor {
         this.endereco = endereco;
     }
     
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getRazaoSocial() {

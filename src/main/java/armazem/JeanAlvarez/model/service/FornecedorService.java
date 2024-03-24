@@ -12,7 +12,7 @@ import armazem.JeanAlvarez.model.domain.Fornecedor;
 
 @Service
 public class FornecedorService {
-	private Map<String, Fornecedor> fornecedores = new HashMap<>();
+	private Map<Integer, Fornecedor> fornecedores = new HashMap<>();
 	
 	@Autowired
     private LocalidadeService localidadeService;
@@ -26,7 +26,7 @@ public class FornecedorService {
     }
 	
 
-    public Fornecedor obter(String idFornecedor) {
+    public Fornecedor obter(Integer idFornecedor) {
         return fornecedores.get(idFornecedor);
     }
 
@@ -34,7 +34,7 @@ public class FornecedorService {
         return fornecedores.values();
     }
 
-    public boolean atualizar(String idFornecedor, Fornecedor dadosFornecedor) {
+    public boolean atualizar(Integer idFornecedor, Fornecedor dadosFornecedor) {
         if (fornecedores.containsKey(idFornecedor)) {
             fornecedores.put(idFornecedor, dadosFornecedor);
             return true;
@@ -42,7 +42,7 @@ public class FornecedorService {
         return false;
     }
 
-    public boolean excluir(String idFornecedor) {
+    public boolean excluir(Integer idFornecedor) {
         return fornecedores.remove(idFornecedor) != null;
     }
 

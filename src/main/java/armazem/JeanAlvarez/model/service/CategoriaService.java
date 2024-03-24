@@ -11,7 +11,7 @@ import armazem.JeanAlvarez.model.domain.Categoria;
 
 @Service
 public class CategoriaService {
-    private Map<String, Categoria> categorias = new HashMap<>();
+    private Map<Integer, Categoria> categorias = new HashMap<>();
 
     // Incluir categoria
     public void incluir(Categoria categoria) {
@@ -19,7 +19,7 @@ public class CategoriaService {
     }
 
     // Obter uma categoria pelo ID
-    public Categoria obter(String id) {
+    public Categoria obter(Integer id) {
         return categorias.get(id);
     }
 
@@ -28,27 +28,17 @@ public class CategoriaService {
         return categorias.values();
     }
 
-    // Atualizar categoria
-    public void atualizar(String id, Categoria novosDados) {
-        Categoria categoria = categorias.get(id);
-        if (categoria != null) {
-            categoria.setNome(novosDados.getNome());
-            categoria.setDescricao(novosDados.getDescricao());
-            categoria.setCategoriaPai(novosDados.getCategoriaPai());
-            categorias.put(id, categoria); // atualiza a categoria no mapa
-            System.out.println("Categoria " + categoria.getNome() + " atualizada com sucesso.");
-        } else {
-            System.out.println("Categoria com ID " + id + " não encontrada.");
+    
+    public boolean atualizar(Integer id, Categoria dadosCategoria) {
+        if (categorias.containsKey(id)) {
+        	categorias.put(id, dadosCategoria);
+            return true;
         }
+        return false;
     }
 
-    // Excluir categoria
-    public void excluir(String id) {
-        Categoria removida = categorias.remove(id);
-        if (removida != null) {
-            System.out.println("Categoria com ID " + id + " excluída com sucesso.");
-        } else {
-            System.out.println("Categoria com ID " + id + " não encontrada.");
-        }
+    
+    public boolean excluir(Integer id) {
+        return categorias.remove(id) != null;
     }
 }

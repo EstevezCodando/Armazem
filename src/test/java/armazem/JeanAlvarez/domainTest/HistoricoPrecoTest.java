@@ -12,7 +12,7 @@ import armazem.JeanAlvarez.model.domain.HistoricoPreco;
 public class HistoricoPrecoTest {
 
     private HistoricoPreco historicoPreco;
-    private final String ID_PRODUTO = "P001";
+    private final Integer ID_PRODUTO = 1;
     private final LocalDateTime DATA_ALTERACAO = LocalDateTime.now();
     private final double PRECO_AQUISICAO_ANTIGO = 10.00;
     private final double PRECO_VENDA_ANTIGO = 15.00;

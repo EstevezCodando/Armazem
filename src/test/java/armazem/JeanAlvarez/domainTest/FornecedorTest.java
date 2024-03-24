@@ -11,7 +11,7 @@ import armazem.JeanAlvarez.model.domain.Fornecedor;
 public class FornecedorTest {
 
     private Fornecedor fornecedor;
-    private final String ID = "F001";
+    private final Integer ID = 1;
     private final String RAZAO_SOCIAL = "Distribuidora de Bebidas S.A.";
     private final String CNPJ = "12.345.678/0001-99";
     private final String NOME = "Distribuidora X";

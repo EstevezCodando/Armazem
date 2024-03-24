@@ -3,12 +3,14 @@ package armazem.JeanAlvarez;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import armazem.JeanAlvarez.model.clients.IEnderecoClient;
 import armazem.JeanAlvarez.model.domain.Endereco;
 
 @Component
+@Order(1)
 public class EnderecoLoader implements ApplicationRunner {
 
 	@Autowired
