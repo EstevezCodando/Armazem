@@ -53,7 +53,7 @@ public class ProdutoController {
         return produtoService.obterLista();
     }
 
-    @PostMapping(value="/atualizar/{idProduto}")
+    @PutMapping(value="/atualizar/{idProduto}")
     public String atualizar(@PathVariable Integer idProduto, @RequestBody Produto dadosProduto) {
         Produto produto = produtoService.obter(idProduto);
         if (produto != null) {

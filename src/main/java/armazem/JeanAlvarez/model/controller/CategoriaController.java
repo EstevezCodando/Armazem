@@ -27,7 +27,7 @@ public class CategoriaController {
         return "Categoria " + categoria.getNome() + " incluído com sucesso.";
     }
     
-    @DeleteMapping(value="/excluir/{idFornecedor}")
+    @DeleteMapping(value="/excluir/{id}")
     public String excluir(@PathVariable Integer id) {
         boolean excluido = categoriaService.excluir(id);
         if (excluido) {
@@ -37,7 +37,7 @@ public class CategoriaController {
         }
     }
 
-    @GetMapping(value= "/obterPorID/{idFornecedor}")
+    @GetMapping(value= "/obterPorID/{id}")
     public Categoria obter(@PathVariable Integer id) {
         return categoriaService.obter(id);
     }
@@ -47,13 +47,13 @@ public class CategoriaController {
         return categoriaService.obterLista();
     }
 
-    @PostMapping(value="/atualizar/{idFornecedor}")
-    public String atualizar(@PathVariable Integer id, Categoria dadosCategoria) {
+    @PostMapping(value="/atualizar/{id}")
+    public String atualizar(@PathVariable Integer id, @RequestBody Categoria dadosCategoria) {
         boolean atualizado = categoriaService.atualizar(id, dadosCategoria);
         if (atualizado) {
-            return "Categoria " + dadosCategoria.getNome() + " atualizado com sucesso.";
+            return "Categoria " + dadosCategoria.getNome() + " atualizada com sucesso.";
         } else {
-            return "Categoria com ID " + id + " não encontrado.";
+            return "Categoria com ID " + id + " não encontrada.";
         }
     }
 

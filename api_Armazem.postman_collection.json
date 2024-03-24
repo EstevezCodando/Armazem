@@ -53,13 +53,13 @@
 					"response": []
 				},
 				{
-					"name": "incluirPeloCEP",
+					"name": "incluir So com CEP",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"id\": \"F020\",\r\n   \"razaoSocial\": \"Piraque LTDA\",\r\n   \"cnpj\": \"33.123.456/0001-99\",\r\n   \"nome\": \"Piraque\",\r\n   \"nomeFantasia\": \"Piraque Biscoito da Vaquinha\",\r\n   \"telefone\": \"2130034004\",\r\n   \"endereco\": {\r\n    \"cep\": \"20930040\"\r\n   }\r\n}",
+							"raw": "{\r\n   \"id\": \"5\",\r\n   \"razaoSocial\": \"Piraque LTDA\",\r\n   \"cnpj\": \"33.123.456/0001-99\",\r\n   \"nome\": \"Piraque\",\r\n   \"nomeFantasia\": \"Piraque Biscoito da Vaquinha\",\r\n   \"telefone\": \"2130034004\",\r\n   \"endereco\": {\r\n    \"cep\": \"20930040\"\r\n   }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -83,13 +83,13 @@
 					"response": []
 				},
 				{
-					"name": "IncluirCompleto",
+					"name": "incluir Completo",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"id\": \"F999\",\r\n   \"razaoSocial\": \"Camil LTDA\",\r\n   \"cnpj\": \"33.123.456/0001-99\",\r\n   \"nome\": \"Camil\",\r\n   \"nomeFantasia\": \"Camil Arroz\",\r\n   \"telefone\": \"2130034004\",\r\n   \"endereco\": {\r\n    \"cep\": \"20930040\",\r\n    \"logradouro\": \"Rua B\",\r\n    \"complemento\": \"Camil Industrias\",\r\n    \"bairro\": \"Bangu\",\r\n    \"localidade\": \"Rio de Janeiro\",\r\n    \"uf\": \"Rj\"\r\n\r\n   }\r\n}",
+							"raw": "{\r\n   \"id\": \"2\",\r\n   \"razaoSocial\": \"Piraque LTDA\",\r\n   \"cnpj\": \"33.123.456/0001-99\",\r\n   \"nome\": \"Piraque\",\r\n   \"nomeFantasia\": \"Piraque Biscoito da Vaquinha\",\r\n   \"telefone\": \"2130034004\",\r\n   \"endereco\": {\r\n    \"cep\": \"20930040\",\r\n    \"logradouro\": \"Avenida Brasil\",\r\n    \"complemento\": \"de 1202 a 3798 - lado par\",\r\n    \"bairro\": \"Benfica\",\r\n    \"localidade\": \"Rio de Janeiro\",\r\n    \"uf\": \"RJ\"\r\n   }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -115,8 +115,435 @@
 				{
 					"name": "excluir",
 					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/fornecedores/excluir/F999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"fornecedores",
+								"excluir",
+								"F999"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categoria",
+			"item": [
+				{
+					"name": "lista",
+					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/categoria/lista",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"categoria",
+								"lista"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obterPorID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/categoria/obterPorID/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"categoria",
+								"obterPorID",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "incluir",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 3,\r\n  \"nome\": \"Alimentícios\",\r\n  \"descricao\": \"Produtos relacionados à alimentação e nutrição\",\r\n  \"categoriaPai\": null\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/categoria/incluir",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"categoria",
+								"incluir"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar por id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"3\",\r\n    \"nome\": \"Alimentícios\",\r\n    \"descricao\": \"Produtos relacionados à alimentação e nutrição Atualizado\",\r\n    \"categoriaPai\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/categoria/atualizar/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"categoria",
+								"atualizar",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/categoria/excluir/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"categoria",
+								"excluir",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Historico",
+			"item": [
+				{
+					"name": "lista",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/historicodosprecos/lista",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"historicodosprecos",
+								"lista"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obterPorIDHistorico",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/historicodosprecos/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"historicodosprecos",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PorIdProduto",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"id\": \"F020\",\r\n   \"razaoSocial\": \"Piraque LTDA\",\r\n   \"cnpj\": \"33.123.456/0001-99\",\r\n   \"nome\": \"Piraque\",\r\n   \"nomeFantasia\": \"Piraque Biscoito da Vaquinha\",\r\n   \"telefone\": \"2130034004\",\r\n   \"endereco\": {\r\n    \"cep\": \"20930040\"\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/historicodosprecos/produto/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"historicodosprecos",
+								"produto",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produto",
+			"item": [
+				{
+					"name": "Incluir",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idProduto\": 3,\r\n  \"nome\": \"Arroz\",\r\n  \"marca\": \"Cargill\",\r\n  \"volume\": \"1 kg\",\r\n  \"descricao\": \"Arroz branco de alta qualidade\",\r\n  \"categoria\": {\r\n    \"id\": 3,\r\n    \"nome\": \"Alimentos\"\r\n  },\r\n  \"codigodeBarras\": \"7896541230123\",\r\n  \"precoAquisicao\": 10.00,\r\n  \"precoVenda\": 15.00,\r\n  \"quantidadeEstoque\": 100,\r\n  \"fornecedores\": [\r\n    {\r\n      \"id\": 4,\r\n      \"nome\": \"Cargill Agrícola S.A.\",\r\n      \"cnpj\": \"60.498.706/0001-46\",\r\n      \"nomeFantasia\": \"Cargill\",\r\n      \"razaoSocial\": \"Cargill\",\r\n      \"telefoneContato\": \"0800 648 0808\",\r\n      \"endereco\": {\r\n        \"cep\": \"01451-000\"\r\n      }\r\n    }\r\n  ],\r\n  \"historicoPreco\": null  \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/produtos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ObterPorID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"id\": \"F999\",\r\n   \"razaoSocial\": \"Camil LTDA\",\r\n   \"cnpj\": \"33.123.456/0001-99\",\r\n   \"nome\": \"Camil\",\r\n   \"nomeFantasia\": \"Camil Arroz\",\r\n   \"telefone\": \"2130034004\",\r\n   \"endereco\": {\r\n    \"cep\": \"20930040\",\r\n    \"logradouro\": \"Rua B\",\r\n    \"complemento\": \"Camil Industrias\",\r\n    \"bairro\": \"Bangu\",\r\n    \"localidade\": \"Rio de Janeiro\",\r\n    \"uf\": \"Rj\"\r\n\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/produtos/obterPorID/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"produtos",
+								"obterPorID",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lista",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/produtos/lista",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"produtos",
+								"lista"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idProduto\": 3,\r\n  \"nome\": \"Vodka Absolut Atualizada\",\r\n  \"marca\": \"Absolut\",\r\n  \"volume\": \"1 L\",\r\n  \"descricao\": \"Vodka sueca premium\",\r\n  \"categoria\": {\r\n    \"id\": 2,\r\n    \"nome\": \"Alcoólicas\"\r\n  },\r\n  \"codigodeBarras\": \"7896541239999\",\r\n  \"precoAquisicao\": 35.00,\r\n  \"precoVenda\": 50.00,\r\n  \"quantidadeEstoque\": 75,\r\n  \"fornecedores\": [\r\n    {\r\n      \"id\": 2\r\n    }\r\n  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/produtos/atualizar/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"produtos",
+								"atualizar",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Preço de VENDA",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"novoPrecoVenda\": 15.00\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/produtos//precoVenda",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"produtos",
+								"",
+								"precoVenda"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Preço Aquisicao",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"novoPrecoAquisicao\": 9.30\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/produtos/3/novoPrecoAquisicao",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"produtos",
+								"3",
+								"novoPrecoAquisicao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/produtos/excluir/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"produtos",
+								"excluir",
+								"3"
+							]
+						}
 					},
 					"response": []
 				}
@@ -212,10 +639,6 @@
 					"response": []
 				}
 			]
-		},
-		{
-			"name": "Produto",
-			"item": []
 		}
 	]
 }
